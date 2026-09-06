@@ -164,40 +164,78 @@ section{padding-block:clamp(88px,11vw,150px)}
 .duo .w i{background:#E9A06F}
 .duo p{margin-top:12px;color:var(--muted);font-size:15.5px;line-height:1.8}
 
-/* ── models ──────────────────────────────── */
-.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
-.tabs button{appearance:none;cursor:pointer;border:1px solid var(--glass-line);background:var(--glass);color:var(--ink-2);
-  font-family:var(--f);font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:100px;box-shadow:var(--sh-soft);
-  transition:transform .5s var(--ease),background .4s var(--ease),color .4s var(--ease)}
-.tabs button:hover{transform:translateY(-2px);background:#fff}
-.tabs button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 18px 36px -16px rgba(21,28,63,.35),inset 0 0 0 1.5px var(--navy)}
-.tabs button small{font-family:var(--m);font-size:11px;color:var(--faint);margin-left:6px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.card{position:relative;display:flex;flex-direction:column;gap:6px;padding:22px 22px 20px;border-radius:var(--r-l);text-decoration:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.62));border:1px solid var(--glass-line);
+/* ── models (제품 브라우저) ─────────────── */
+.models .sec-head{max-width:820px}
+.mbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin-bottom:18px}
+.mchips{display:flex;flex-wrap:wrap;gap:10px}
+.mchips button{appearance:none;cursor:pointer;border:1px solid var(--glass-line);background:var(--glass);color:var(--ink-2);
+  font-family:var(--f);font-weight:600;font-size:14.5px;padding:10px 16px;border-radius:100px;box-shadow:var(--sh-soft);
+  transition:transform .5s var(--ease),background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease)}
+.mchips button:hover{transform:translateY(-2px);background:#fff}
+.mchips button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 18px 36px -16px rgba(21,28,63,.5)}
+.mchips button small{font-family:var(--m);font-size:11px;margin-left:6px;opacity:.72}
+.mstat{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--muted);white-space:nowrap}
+.mstat b{color:var(--ink);font-weight:700;font-family:var(--m);font-variant-numeric:tabular-nums}
+.mstat .reset{appearance:none;border:0;background:none;cursor:pointer;font:inherit;font-weight:600;color:var(--navy);text-decoration:underline;text-underline-offset:3px;padding:0}
+.mctl{display:grid;grid-template-columns:minmax(0,1.7fr) repeat(3,minmax(0,.75fr));gap:14px;margin-bottom:34px}
+.fld{display:grid;gap:8px;align-content:start}
+.fld label{font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.fld .in{position:relative}
+.fld input,.fld select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:16px;color:var(--ink);
+  background:var(--glass-2);border:1px solid var(--glass-line);border-radius:18px;padding:14px 16px;
+  box-shadow:var(--sh-soft),inset 0 1px 0 #fff;outline:0;transition:box-shadow .4s var(--ease),background .4s var(--ease)}
+.fld input{padding-right:44px}
+.fld input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+.fld input:focus,.fld select:focus{background-color:#fff;box-shadow:0 0 0 2px var(--navy),var(--sh-soft)}
+.fld input::placeholder{color:var(--faint)}
+.fld select{cursor:pointer;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%232E3450' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center}
+.fld .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:0;
+  background:rgba(18,22,43,.07);color:var(--ink-2);cursor:pointer;display:none;place-items:center;font-family:var(--m);font-size:13px}
+.fld .in.has .clr{display:grid}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{position:relative;display:flex;flex-direction:column;border-radius:var(--r-l);overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.7));border:1px solid var(--glass-line);
   box-shadow:var(--sh-soft),inset 0 1px 0 #fff;transition:transform .7s var(--ease),box-shadow .7s var(--ease);will-change:transform}
 .card:hover{transform:translateY(-6px);box-shadow:var(--sh-float),inset 0 1px 0 #fff}
-.card .pic{height:170px;display:grid;place-items:center;margin:-4px 0 12px;position:relative}
-.card .pic::after{content:"";position:absolute;left:18%;right:18%;bottom:10px;height:14px;border-radius:50%;background:rgba(21,28,63,.16);filter:blur(10px)}
-.card .pic img{max-height:150px;max-width:86%;width:auto;object-fit:contain;position:relative;z-index:1;transition:transform .8s var(--ease)}
-.card:hover .pic img{transform:translateY(-6px) scale(1.03)}
-.card .pic.two img{max-height:130px}
-.card .pic.two img+img{margin-left:-6%;max-height:70px;align-self:end;margin-bottom:22px}
-.card .pic .stand{max-height:150px}
-.pill{align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:100px;background:var(--cyan-2);color:#1F5F84}
-.pill.lg{background:#FCE0E6;color:#A6284B}
-.pill.cr{background:#DDEFF9;color:#1B5C8F}
-.pill.wn{background:var(--peach-2);color:#9A4F22}
-.pill.ss{background:#E1E6FB;color:#2B3B9C}
-.card .model{font-weight:700;font-size:17px;letter-spacing:-.02em;margin-top:6px}
-.card .spec{font-size:13px;color:var(--muted)}
-.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
-.card .price{font-family:var(--m);font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.card .price i{font-style:normal;font-family:var(--f);font-size:12px;color:var(--muted);margin-left:2px}
-.card .go{width:34px;height:34px;border-radius:50%;background:rgba(18,22,43,.06);display:grid;place-items:center;font-family:var(--m);font-size:14px;
-  transition:transform .6s var(--ease),background .4s var(--ease),color .4s var(--ease)}
-.card:hover .go{background:var(--navy);color:#fff;transform:translate(2px,-2px)}
-.models .note{margin-top:28px;font-size:13.5px;color:var(--muted);max-width:70ch;line-height:1.8}
+.card.enter{animation:cardIn .8s var(--ease) backwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.card .pic{position:relative;height:232px;display:grid;place-items:center;background:linear-gradient(180deg,#FAFCFE 0%,#EDF3F9 100%);border-bottom:1px solid var(--line)}
+.card .pic::after{content:"";position:absolute;left:24%;right:24%;bottom:14px;height:16px;border-radius:50%;background:rgba(21,28,63,.14);filter:blur(10px)}
+.card .pic img{max-height:198px;max-width:80%;width:auto;height:auto;object-fit:contain;position:relative;z-index:1;transition:transform .8s var(--ease)}
+.card:hover .pic img{transform:translateY(-5px) scale(1.03)}
+.card .body{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px;flex:1}
+.card .meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card .pill{font-size:11.5px;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:100px;background:var(--cyan-2);color:#1F5F84}
+.card .pill.lg{background:#FCE0E6;color:#A6284B}
+.card .pill.cr{background:#DDEFF9;color:#1B5C8F}
+.card .pill.wn{background:var(--peach-2);color:#9A4F22}
+.card .pill.ss{background:#E1E6FB;color:#2B3B9C}
+.card .kind{font-size:12.5px;font-weight:600;color:var(--muted)}
+.card .model{font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1.35;margin-top:8px}
+.card .model a{color:inherit;text-decoration:none}
+.card .model a:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.card a.pic{text-decoration:none;color:inherit}
+.card .spec{font-size:13.5px;color:var(--muted)}
+.card .spec b{color:var(--ink-2);font-weight:600}
+.card .pricebox{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line-2);display:grid;gap:2px}
+.card .pricebox small{font-family:var(--m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.card .price{font-family:var(--m);font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.2}
+.card .price i{font-style:normal;font-family:var(--f);font-size:13px;color:var(--muted);margin-left:2px}
+.card .ship{margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.6}
+.card .ship b{font-weight:600;color:var(--ink-2)}
+.card .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.card .acts a{display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font-weight:600;font-size:14px;padding:12px 14px;border-radius:14px;
+  transition:transform .5s var(--ease),background .4s var(--ease),box-shadow .4s var(--ease)}
+.card .acts .buy{background:var(--navy);color:#fff;box-shadow:0 14px 30px -16px rgba(21,28,63,.6)}
+.card .acts .buy:hover{transform:translateY(-2px);background:var(--navy-2)}
+.card .acts .ask{background:rgba(18,22,43,.05);color:var(--ink);border:1px solid var(--line)}
+.card .acts .ask:hover{background:#fff;transform:translateY(-2px)}
+.empty{grid-column:1/-1;text-align:center;padding:56px 20px;color:var(--muted);background:var(--glass);border:1px dashed var(--line-2);border-radius:var(--r-l)}
+.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
+.more{display:flex;justify-content:center;margin-top:34px}
+.more[hidden]{display:none}
+.models .note{margin-top:28px;font-size:13.5px;color:var(--muted);max-width:76ch;line-height:1.8}
 
 /* ── craft (설치 품질) ───────────────────── */
 .craft{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:center}
@@ -336,8 +374,8 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
 .callfab.on{opacity:1;transform:none}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(28px)}
-.rv.in{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv:not(.in){opacity:0;transform:translateY(28px)}
+.rv.in{opacity:1;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -346,7 +384,9 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
 
 /* ── responsive ──────────────────────────── */
 @media (max-width:1080px){
-  .grid{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .mctl{grid-template-columns:1fr 1fr 1fr}
+  .mctl .fld:first-child{grid-column:1/-1}
   .nav-links{display:none}
   .trust .wrap{grid-template-columns:1fr 1fr}
   .trust div{border-left:0;padding-inline:0}
@@ -368,9 +408,13 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
   .room .badge.c{left:6%}.room .badge.w{right:6%}
   .duo{grid-template-columns:1fr;gap:26px}
   .grid{grid-template-columns:1fr 1fr;gap:12px}
-  .card{padding:16px 14px 14px;border-radius:24px}
-  .card .pic{height:130px}.card .pic img{max-height:112px}
-  .card .model{font-size:15px}.card .price{font-size:15.5px}
+  .card{border-radius:24px}
+  .card .pic{height:170px}.card .pic img{max-height:142px}
+  .card .body{padding:14px 14px 16px}
+  .card .model{font-size:15.5px}.card .price{font-size:19px}
+  .card .acts{grid-template-columns:1fr;gap:6px}.card .acts a{padding:11px 12px;font-size:13.5px}
+  .mbar{flex-direction:column;align-items:flex-start}
+  .mctl{grid-template-columns:1fr 1fr;gap:10px}
   .path{grid-template-columns:1fr}
   .tile:nth-child(even),.tile:nth-child(even):hover{transform:none}
   .est{grid-template-columns:1fr}
@@ -381,6 +425,8 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
 }
 @media (max-width:420px){
   .grid{grid-template-columns:1fr}
+  .mctl{grid-template-columns:1fr}
+  .mctl .fld:first-child{grid-column:auto}
 }
 </style>
 </head>
@@ -405,7 +451,7 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
     <div>
       <span class="eyebrow rv"><i></i>구리 · 남양주 에어컨 판매 · 설치</span>
       <h1 class="rv d1" style="margin-top:22px"><span class="cool">여름도</span> <span class="warm">겨울도,</span><br>한 대로 끝.</h1>
-      <p class="sub rv d2">캐리어 · 삼성 · LG · 위니아 냉난방기 44종.<br>현장 실측 후 항목별로 나눈 견적을 드립니다.</p>
+      <p class="sub rv d2">캐리어 · 삼성 · LG · 위니아 에어컨 · 냉난방기 44종.<br>현장 실측 후 항목별로 나눈 견적을 드립니다.</p>
       <div class="acts rv d3">
         <a class="btn btn-navy" href="tel:01090822174">전화 상담 <span class="num">010-9082-2174</span><span class="ic">↗</span></a>
         <a class="btn btn-glass" href="#models">판매 모델 44종 <span class="ic">↓</span></a>
@@ -468,12 +514,42 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
     <div class="sec-head">
       <span class="eyebrow rv"><i></i>Models · 44</span>
       <h2 class="rv d1">지금 판매 중인 모델 44종</h2>
-      <p class="lede rv d2">모델을 누르면 스마트스토어 상품 페이지로 이동합니다. 설치 포함 여부와 배관 조건은 실측 후 안내드립니다.</p>
+      <p class="lede rv d2">벽걸이부터 스탠드, 2in1까지. 브랜드·형태·기능으로 골라 보고, 모델을 누르면 스마트스토어 상품 페이지로 이동합니다. 설치 포함 여부와 배관 조건은 실측 후 안내드립니다.</p>
     </div>
-    <div class="tabs rv" id="tabs" role="group" aria-label="제품군 선택"></div>
+
+    <div class="mbar rv">
+      <div class="mchips" id="chips" role="group" aria-label="브랜드 선택"></div>
+      <div class="mstat"><span id="mstat" aria-live="polite">전체 44개 중 <b>44</b>개 상품</span><button type="button" class="reset" id="mreset">검색 초기화</button></div>
+    </div>
+
+    <form class="mctl rv d1" id="mctl" autocomplete="off" onsubmit="return false">
+      <div class="fld">
+        <label for="mq">모델명 · 상품명 검색</label>
+        <div class="in" id="mqwrap">
+          <input id="mq" type="search" inputmode="search" placeholder="예: 삼성, AR16, 2in1, 냉난방">
+          <button type="button" class="clr" id="mqclr" aria-label="검색어 지우기">×</button>
+        </div>
+      </div>
+      <div class="fld">
+        <label for="mkind">제품 형태</label>
+        <select id="mkind"><option value="all">전체 형태</option><option value="wall">벽걸이형</option><option value="stand">스탠드형</option><option value="two">2in1</option></select>
+      </div>
+      <div class="fld">
+        <label for="mmode">기능</label>
+        <select id="mmode"><option value="all">냉방 · 냉난방 전체</option><option value="hp">냉방 + 난방</option><option value="cool">냉방 전용</option></select>
+      </div>
+      <div class="fld">
+        <label for="msort">정렬</label>
+        <select id="msort"><option value="default">기본순</option><option value="low">낮은 가격순</option><option value="high">높은 가격순</option></select>
+      </div>
+    </form>
+
     <div class="grid" id="grid"></div>
-    <p class="note rv">가격은 2026년 9월 스마트스토어 판매가 기준이며 스토어에 표시된 가격이 우선합니다.
-      "스토어에서 확인"으로 표시된 항목은 상품 페이지에서 평형과 사양을 확인해 주세요.</p>
+    <div class="more" id="more" hidden><button type="button" class="btn btn-glass" id="morebtn">상품 더 보기 <span class="num" id="morenum"></span><span class="ic">↓</span></button></div>
+
+    <p class="note rv">판매가 확인: 2026년 9월 6일 스마트스토어 표시 판매가 기준이며, 옵션·재고·할인·배송비는 변경될 수 있어 스토어에 표시된 가격이 우선합니다.
+      제품만 별도 배송하지 않으며 설치와 함께 판매합니다. "옵션·면적은 상품에서 확인"으로 표시된 항목은 상품 페이지에서 평형과 사양을 확인해 주세요.
+      일부 제품 이미지는 배경을 정리한 대표 이미지이며, 정확한 외형과 구성은 선택한 상품·옵션에서 확인해 주세요.</p>
   </div>
 </section>
 
@@ -527,7 +603,7 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
     </div>
     <div class="sizer">
       <div class="panel rv">
-        <div class="field"><label for="sp-1">공간 종류</label>
+        <div class="field"><label>공간 종류</label>
           <div class="chips" id="sp-1" role="group" aria-label="공간 종류">
             <button type="button" data-f="0.36" aria-pressed="true">거실 · 주거</button>
             <button type="button" data-f="0.33" aria-pressed="false">방 · 침실</button>
@@ -536,7 +612,7 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
           </div></div>
         <div class="field"><label for="sp-2">면적</label>
           <div class="slider-row"><input type="range" id="sp-2" min="4" max="45" step="1" value="16" aria-label="면적(평)"><span class="pyeong" id="sp-out">16<i>평</i></span></div></div>
-        <div class="field"><label for="sp-3">조건 (해당하는 것만)</label>
+        <div class="field"><label>조건 (해당하는 것만)</label>
           <div class="chips" id="sp-3" role="group" aria-label="추가 조건">
             <button type="button" data-add="0.05" aria-pressed="false">서향 · 창이 큼</button>
             <button type="button" data-add="0.05" aria-pressed="false">최상층 · 단열 약함</button>
@@ -683,94 +759,147 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ── 판매 모델 데이터 (스마트스토어 airseller, 2026-09 기준) ── */
+  /* ── 판매 모델 데이터 (스마트스토어 airseller, 판매가 확인 2026-09-06) ── */
   var STORE = "https://smartstore.naver.com/airseller/products/";
-  var CATS = [
-    ["hp",   "벽걸이 냉난방기"],
-    ["cool", "벽걸이 냉방"],
-    ["stand","스탠드형 · 냉난방기"],
-    ["two",  "멀티 2in1"]
-  ];
-  /* [cat, brand, model, spec, price, id, img] — img: wall | tower | two */
+  var TEL = "tel:01090822174";
+  var KIND = { wall: "벽걸이형", stand: "스탠드형", two: "2in1" };
+  var MODE = { hp: "냉방 + 난방", cool: "냉방 전용" };
+  var BR = { "삼성": "ss", "LG": "lg", "캐리어": "cr", "위니아": "wn" };
+  var BRANDS = ["삼성", "LG", "캐리어", "위니아"];
+  /* [id, brand, model, kind(wall|stand|two), mode(hp|cool), spec, price, shipping, storeTitle] */
   var P = [
-    ["hp","삼성","AR16C9180HZ","16평형",1449000,"13653790713","wall"],
-    ["hp","삼성","AR13C9180HZ","13평형",1299000,"13653790712","wall"],
-    ["hp","삼성","AR11C9180HZ","11평형",1219000,"13653790711","wall"],
-    ["hp","삼성","AR09C9180HZ","9평형",1069000,"13653790710","wall"],
-    ["hp","삼성","AR07C9180HZ","7평형",959000,"13653790709","wall"],
-    ["hp","LG","SW16BAKWAS","16평형",1422950,"13653790708","wall"],
-    ["hp","LG","SW13BAKWAS","13평형",1369000,"13653790707","wall"],
-    ["hp","LG","SW11BAKWAS","11평형",1219000,"13653790706","wall"],
-    ["hp","LG","SW09BDJWAS","9평형",1135000,"13653790705","wall"],
-    ["hp","LG","SW07BDJWAS","7평형",1035000,"13653790704","wall"],
-    ["hp","캐리어","DARQ-0161CAWSD","16평형",1119000,"13653791419","wall"],
-    ["hp","캐리어","DARQ-0141CAWSD","14평형",1005000,"13653791418","wall"],
-    ["hp","캐리어","DARQ-0121CAWSD","12평형",895000,"13653791417","wall"],
-    ["hp","캐리어","DARQ-0091CAWSD","9평형",685000,"13653791416","wall"],
-    ["hp","캐리어","DARQ-0071CAWSD","7평형",725000,"13653791415","wall"],
-    ["hp","캐리어","1ARQ-0071CAWSD","7평형",605000,"13653791414","wall"],
-    ["hp","캐리어","CSV-Q165B","16평형",1215000,"13653790703","wall"],
-    ["hp","캐리어","CSV-Q135B","13평형",985000,"13653790702","wall"],
-    ["hp","캐리어","CSV-Q115B","11평형",865000,"13653790701","wall"],
-    ["hp","캐리어","CSV-Q095B","9평형",745000,"13653790700","wall"],
-    ["hp","캐리어","CSV-Q075B","7평형",655000,"13653790699","wall"],
-    ["hp","캐리어","CSV-Q117A","11평형",1095000,"13653790698","wall"],
-    ["hp","캐리어","CSV-Q097A","9평형",809150,"13653790697","wall"],
-    ["hp","캐리어","CSV-Q077A","7평형",716150,"13653790696","wall"],
-    ["hp","캐리어","벽걸이 냉난방기","스토어에서 확인",575000,"9091045337","wall"],
-    ["hp","위니아","벽걸이 냉난방기","스토어에서 확인",595000,"7058949809","wall"],
-    ["cool","삼성","AR60F13C13WS","13평형",1325000,"13653791422","wall"],
-    ["cool","삼성","AR60F09C13WS","9평형",1019000,"13653791421","wall"],
-    ["cool","삼성","AR60F07C12WS","7평형",1035000,"13653791420","wall"],
-    ["cool","삼성","AR06A1171HZ","6평형",457000,"8357448573","wall"],
-    ["cool","LG","휘센 SQ06BCAWDS","6평형",487000,"8357138737","wall"],
-    ["cool","캐리어","DARB-0062GDWSD","6평형",395000,"13628819226","wall"],
-    ["cool","캐리어","벽걸이 인버터","스토어에서 확인",398000,"8596876492","wall"],
-    ["stand","삼성","AP060BSPPBH2 냉난방기","6.0 kW급",965000,"8528355870","tower"],
-    ["stand","LG","휘센 PW0603R2SF 냉난방기","6.0 kW급",1150000,"10625435629","tower"],
-    ["stand","캐리어","스탠드 냉난방기","스토어에서 확인",1040000,"7177291983","tower"],
-    ["stand","캐리어","냉난방기 · 냉온풍기","스토어에서 확인",1040000,"4295181192","tower"],
-    ["stand","캐리어","1등급 스탠드 에어컨","스토어에서 확인",1575000,"13576949738","tower"],
-    ["stand","캐리어","스탠드형 에어컨","스토어에서 확인",945000,"10409361324","tower"],
-    ["stand","삼성","Q9000 스탠드 인버터","스토어에서 확인",1065000,"8622375566","tower"],
-    ["stand","LG","휘센 스탠드형 인버터","스토어에서 확인",1490000,"6371967184","tower"],
-    ["two","캐리어","1등급 2in1 에어컨","스토어에서 확인",1645000,"13576986260","two"],
-    ["two","삼성","Q9000 멀티 2in1","스토어에서 확인",1188000,"8305360505","two"],
-    ["two","캐리어","멀티형 2in1 에어컨","스토어에서 확인",1090000,"4312492713","two"]
+    ["8528355870", "삼성", "AP060BSPPBH2 냉난방기", "stand", "hp", "6.0 kW급", 965000, "착불 30,000원", "삼성 AP060BSPPBH2 냉난방기 냉온풍기 인버터 실외기포함 기본설치비별도"],
+    ["4295181192", "캐리어", "냉난방기 · 냉온풍기", "stand", "hp", "옵션·면적은 상품에서 확인", 1040000, "착불 30,000원", "캐리어 에어컨 냉난방기 냉온풍기 스탠드형 가정용 사무실 인버터 실외기포함 기본설치비별도"],
+    ["8305360505", "삼성", "Q9000 멀티 2in1", "two", "cool", "옵션·면적은 상품에서 확인", 1188000, "착불 30,000원", "삼성 에어컨 Q9000 멀티 2in1 인버터 실외기포함 유풍, 기본설치비별도,실외기포함"],
+    ["4312492713", "캐리어", "멀티형 2in1 에어컨", "two", "cool", "52.8㎡+18.7㎡", 1090000, "착불 30,000원", "캐리어에어컨 멀티형 2in1에어컨 52.8㎡+18.7㎡ ,기본설치비별도,실외기포함"],
+    ["13653790713", "삼성", "AR16C9180HZ", "wall", "hp", "52.8㎡", 1449000, "30,000원", "삼성 AR16C9180HZ 벽걸이 냉난방기 52.8㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13628819226", "캐리어", "DARB-0062GDWSD", "wall", "cool", "6평형", 395000, "착불 30,000원", "캐리어 DARB-0062GDWSD 벽걸이에어컨 인버터 기본설치비별도"],
+    ["13576949738", "캐리어", "DASB-0161XAWMD", "stand", "cool", "52.8㎡", 1575000, "착불 30,000원", "캐리어 DASB-0161XAWMD 스탠드 에어컨 52.8㎡ 인버터 실외기포함 기본설치비별도"],
+    ["10625435629", "LG", "휘센 PW0603R2SF 냉난방기", "stand", "hp", "6.0 kW급", 1150000, "착불 1,000원", "LG 휘센 PW0603R2SF 냉난방기 냉온풍기 15평 인버터 스탠드형 기본설치비별도"],
+    ["8622375566", "삼성", "Q9000 스탠드 인버터", "stand", "cool", "56.9㎡", 1065000, "착불 30,000원", "삼성 Q9000 스탠드 에어컨 인버터 56.9㎡ 실외기포함 기본설치비별도"],
+    ["13653790712", "삼성", "AR13C9180HZ", "wall", "hp", "42.3㎡", 1299000, "30,000원", "삼성 AR13C9180HZ 벽걸이 냉난방기 42.3㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653790711", "삼성", "AR11C9180HZ", "wall", "hp", "38.2㎡", 1219000, "30,000원", "삼성 AR11C9180HZ 벽걸이 냉난방기 38.2㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653790710", "삼성", "AR09C9180HZ", "wall", "hp", "29.3㎡", 1069000, "30,000원", "삼성 AR09C9180HZ 벽걸이 냉난방기 29.3㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653790709", "삼성", "AR07C9180HZ", "wall", "hp", "24.4㎡", 959000, "30,000원", "삼성 AR07C9180HZ 벽걸이 냉난방기 24.4㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653790708", "LG", "SW16BAKWAS / SW16FK1WBS", "wall", "hp", "52.8㎡", 1422950, "30,000원", "LG SW16BAKWAS SW16FK1WBS 벽걸이 냉난방기 52.8㎡ 기본설치비별도"],
+    ["13653790707", "LG", "SW13BAKWAS / SW13GK1WAS", "wall", "hp", "42.3㎡", 1369000, "30,000원", "LG SW13BAKWAS SW13GK1WAS 벽걸이 냉난방기 42.3㎡ 기본설치비별도"],
+    ["13653790706", "LG", "SW11BAKWAS / SW11GK1WAS", "wall", "hp", "38.2㎡", 1219000, "30,000원", "LG SW11BAKWAS SW11GK1WAS 벽걸이 냉난방기 38.2㎡ 기본설치비별도"],
+    ["13653790705", "LG", "SW09BDJWAS / SW09GK1WAS", "wall", "hp", "29.3㎡", 1135000, "30,000원", "LG SW09BDJWAS SW09GK1WAS 벽걸이 냉난방기 29.3㎡ 기본설치비별도"],
+    ["13653790704", "LG", "SW07BDJWAS / SW07GJ1WAS", "wall", "hp", "22.8㎡", 1035000, "30,000원", "LG SW07BDJWAS SW07GJ1WAS 벽걸이 냉난방기 22.8㎡ 기본설치비별도"],
+    ["13653791419", "캐리어", "DARQ-0161CAWSD", "wall", "hp", "52.8㎡", 1119000, "30,000원", "캐리어 DARQ-0161CAWSD 벽걸이 냉난방기 52.8㎡ 실외기포함 기본설치비별도"],
+    ["13653791418", "캐리어", "DARQ-0141CAWSD", "wall", "hp", "44.7㎡", 1005000, "30,000원", "캐리어 DARQ-0141CAWSD 벽걸이 냉난방기 44.7㎡ 실외기포함 기본설치비별도"],
+    ["13653791417", "캐리어", "DARQ-0121CAWSD", "wall", "hp", "38.2㎡", 895000, "30,000원", "캐리어 DARQ-0121CAWSD 벽걸이 냉난방기 38.2㎡ 실외기포함 기본설치비별도"],
+    ["13653791416", "캐리어", "DARQ-0091CAWSD", "wall", "hp", "30.1㎡", 685000, "30,000원", "캐리어 DARQ-0091CAWSD 벽걸이 냉난방기 30.1㎡ 실외기포함 기본설치비별도"],
+    ["13653791415", "캐리어", "DARQ-0071CAWSD", "wall", "hp", "22.8㎡", 725000, "30,000원", "캐리어 DARQ-0071CAWSD 벽걸이 냉난방기 22.8㎡ 실외기포함 기본설치비별도"],
+    ["13653791414", "캐리어", "IARQ-0071CAWSD", "wall", "hp", "22.8㎡", 605000, "30,000원", "캐리어 IARQ-0071CAWSD 벽걸이 냉난방기 22.8㎡ 실외기포함 기본설치비별도"],
+    ["13653790703", "캐리어", "CSV-Q165B", "wall", "hp", "52.8㎡", 1215000, "30,000원", "캐리어 CSV-Q165B 벽걸이 냉난방기 52.8㎡ 실외기포함 기본설치비별도"],
+    ["13653790702", "캐리어", "CSV-Q135B", "wall", "hp", "42.3㎡", 985000, "30,000원", "캐리어 CSV-Q135B 벽걸이 냉난방기 42.3㎡ 실외기포함 기본설치비별도"],
+    ["13653790701", "캐리어", "CSV-Q115B", "wall", "hp", "37.4㎡", 865000, "30,000원", "캐리어 CSV-Q115B 벽걸이 냉난방기 37.4㎡ 실외기포함 기본설치비별도"],
+    ["13653790700", "캐리어", "CSV-Q095B", "wall", "hp", "29.3㎡", 745000, "30,000원", "캐리어 CSV-Q095B 벽걸이 냉난방기 29.3㎡ 실외기포함 기본설치비별도"],
+    ["13653790699", "캐리어", "CSV-Q075B", "wall", "hp", "22.8㎡", 655000, "30,000원", "캐리어 CSV-Q075B 벽걸이 냉난방기 22.8㎡ 실외기포함 기본설치비별도"],
+    ["13653790698", "캐리어", "CSV-Q117A", "wall", "hp", "37.4㎡", 1095000, "30,000원", "캐리어 CSV-Q117A 벽걸이 냉난방기 37.4㎡ 실외기포함 기본설치비별도"],
+    ["13653790697", "캐리어", "CSV-Q097A", "wall", "hp", "28.5㎡", 809150, "30,000원", "캐리어 CSV-Q097A 벽걸이 냉난방기 28.5㎡ 실외기포함 기본설치비별도"],
+    ["13653790696", "캐리어", "CSV-Q077A", "wall", "hp", "20.3㎡", 716150, "30,000원", "캐리어 CSV-Q077A 벽걸이 냉난방기 20.3㎡ 실외기포함 기본설치비별도"],
+    ["9091045337", "캐리어", "벽걸이 냉난방기", "wall", "hp", "옵션·면적은 상품에서 확인", 575000, "착불 1,000원", "캐리어 에어컨 냉난방기 벽걸이형 인버터 실외기포함 냉온풍기 온풍기 ,기본설치비별도"],
+    ["7058949809", "위니아", "벽걸이 냉난방기", "wall", "hp", "옵션·면적은 상품에서 확인", 595000, "착불 1,000원", "위니아 냉난방기 벽걸이형 7평 인버터 실외기포함 온풍기"],
+    ["13653791422", "삼성", "AR60F13C13WS", "wall", "hp", "42.3㎡", 1325000, "30,000원", "삼성 AR60F13C13WS 벽걸이 냉난방기 42.3㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653791421", "삼성", "AR60F09C13WS", "wall", "hp", "29.3㎡", 1019000, "30,000원", "삼성 AR60F09C13WS 벽걸이 냉난방기 29.3㎡ 무풍 실외기포함 기본설치비별도"],
+    ["13653791420", "삼성", "AR60F07C12WS", "wall", "hp", "24.4㎡", 1035000, "30,000원", "삼성 AR60F07C12WS 벽걸이 냉난방기 24.4㎡ 무풍 실외기포함 기본설치비별도"],
+    ["8357448573", "삼성", "AR06A1171HZ", "wall", "cool", "6평형", 457000, "착불 1,000원", "삼성 AR06A1171HZ 벽걸이에어컨 6평 인버터 기본설치비별도"],
+    ["8357138737", "LG", "휘센 SQ06BCAWDS", "wall", "cool", "6평형", 487000, "착불 1,000원", "LG 휘센 SQ06BCAWDS 벽걸이에어컨 6평 인버터 기본설치비별도"],
+    ["8596876492", "캐리어", "벽걸이 인버터", "wall", "cool", "옵션·면적은 상품에서 확인", 398000, "착불 1,000원", "캐리어 벽걸이에어컨 6평 인버터 기본설치비별도"],
+    ["7177291983", "캐리어", "스탠드 냉난방기", "stand", "hp", "옵션·면적은 상품에서 확인", 1040000, "착불 1,000원", "캐리어냉난방기 스탠드형 16평 인버터 실외기포함"],
+    ["10409361324", "캐리어", "DASB016XAWMD", "stand", "cool", "옵션·면적은 상품에서 확인", 945000, "착불 1,000원", "캐리어에어컨 스탠드형 절전형 인버터 DASB016XAWMD ,기본설치비별도"],
+    ["6371967184", "LG", "휘센 스탠드형 인버터", "stand", "cool", "옵션·면적은 상품에서 확인", 1490000, "착불 1,000원", "엘지 휘센 스탠드형에어컨 인버터 ,기본설치비별도"],
+    ["13576986260", "캐리어", "1등급 2in1 에어컨", "two", "cool", "52.8㎡+18.7㎡", 1645000, "착불 30,000원", "캐리어 1등급 2in1 에어컨 52.8㎡+18.7㎡ 실외기포함 설치비별도"]
   ];
-  var BR = {"삼성":"ss","LG":"lg","캐리어":"cr","위니아":"wn"};
-  var tabs = document.getElementById("tabs"), grid = document.getElementById("grid");
+  var PAGE = 12;
+  var state = { brand: "all", kind: "all", mode: "all", sort: "default", q: "", shown: PAGE };
+  var chips = document.getElementById("chips"), grid = document.getElementById("grid"),
+      mstat = document.getElementById("mstat"), more = document.getElementById("more"),
+      morebtn = document.getElementById("morebtn"), morenum = document.getElementById("morenum"),
+      mq = document.getElementById("mq"), mqwrap = document.getElementById("mqwrap"), mqclr = document.getElementById("mqclr"),
+      mkind = document.getElementById("mkind"), mmode = document.getElementById("mmode"), msort = document.getElementById("msort"),
+      mreset = document.getElementById("mreset");
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var won = function(n){ return n.toLocaleString("ko-KR"); };
 
-  function pic(kind, model){
-    /* products/<모델명>.jpg 가 있으면 실제 제품 사진을, 없으면 제품군 렌더를 쓴다 */
-    var real = 'products/' + encodeURIComponent(model) + '.jpg';
-    if (kind === "two") return '<span class="pic two"><img src="img/tower.webp" alt="" loading="lazy"><img src="img/wall.webp" alt="" loading="lazy"></span>';
-    var src = kind === "tower" ? "img/tower.webp" : "img/wall.webp";
-    return '<span class="pic"><img src="' + real + '" data-fallback="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fallback"></span>';
-  }
-  function render(cat){
-    var html = "";
-    P.forEach(function(r, i){
-      if (cat !== "all" && r[0] !== cat) return;
-      html += '<a class="card rv" href="' + STORE + r[5] + '" target="_blank" rel="noopener noreferrer">' +
-        pic(r[6], r[2]) +
-        '<span class="pill ' + BR[r[1]] + '">' + esc(r[1]) + '</span>' +
-        '<span class="model">' + esc(r[2]) + '</span>' +
-        '<span class="spec">' + esc(r[3]) + '</span>' +
-        '<span class="row"><span class="price">' + r[4].toLocaleString("ko-KR") + '<i>원</i></span><span class="go">↗</span></span></a>';
+  /* 검색 인덱스: 브랜드·모델·스토어 상품명·형태·기능·면적을 소문자로 합침 */
+  P.forEach(function(r){
+    r.hay = [r[1], r[2], r[8], KIND[r[3]], MODE[r[4]], r[5],
+             r[1] === "LG" ? "엘지 lg 휘센" : "", r[3] === "two" ? "멀티 2in1 투인원" : "", r[4] === "hp" ? "냉난방 냉난방기 난방" : "냉방전용"].join(" ").toLowerCase();
+  });
+
+  function filtered(){
+    var q = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var list = P.filter(function(r){
+      if (state.brand !== "all" && r[1] !== state.brand) return false;
+      if (state.kind  !== "all" && r[3] !== state.kind)  return false;
+      if (state.mode  !== "all" && r[4] !== state.mode)  return false;
+      for (var i = 0; i < q.length; i++){ if (r.hay.indexOf(q[i]) === -1) return false; }
+      return true;
     });
-    grid.innerHTML = html;
-    observe(grid.querySelectorAll(".rv"));
+    if (state.sort === "low")  list = list.slice().sort(function(a, b){ return a[6] - b[6]; });
+    if (state.sort === "high") list = list.slice().sort(function(a, b){ return b[6] - a[6]; });
+    return list;
   }
-  var counts = {}; P.forEach(function(r){ counts[r[0]] = (counts[r[0]]||0) + 1; });
-  var th = '<button type="button" data-cat="all" aria-pressed="true">전체<small>' + P.length + '</small></button>';
-  CATS.forEach(function(c){ th += '<button type="button" data-cat="' + c[0] + '" aria-pressed="false">' + c[1] + '<small>' + counts[c[0]] + '</small></button>'; });
-  tabs.innerHTML = th;
-  tabs.addEventListener("click", function(e){
-    var b = e.target.closest("button"); if (!b) return;
-    tabs.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
-    render(b.dataset.cat);
+  function pic(r){
+    var fb = r[3] === "wall" ? "img/wall.webp" : "img/tower.webp";
+    return '<a class="pic" href="' + STORE + r[0] + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="products/' + r[0] + '.webp" width="900" height="900" alt="" ' +
+      'loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'' + fb + '\'"></a>';
+  }
+  function card(r, i, anim){
+    return '<article class="card' + (anim ? ' enter' : '') + '"' + (anim ? ' style="animation-delay:' + ((i % PAGE) * 45) + 'ms"' : '') + '>' + pic(r) +
+      '<div class="body">' +
+        '<div class="meta"><span class="pill ' + BR[r[1]] + '">' + esc(r[1]) + '</span><span class="kind">' + KIND[r[3]] + '</span></div>' +
+        '<h3 class="model"><a href="' + STORE + r[0] + '" target="_blank" rel="noopener noreferrer">' + esc(r[2]) + '</a></h3>' +
+        '<p class="spec">' + esc(r[5]) + ' · <b>' + MODE[r[4]] + '</b></p>' +
+        '<div class="pricebox"><small>스토어 표시 판매가</small><span class="price">' + won(r[6]) + '<i>원</i></span>' +
+          '<span class="ship"><b>기본 설치비 별도</b> · 배송비 ' + esc(r[7]) + ' · 스토어 표기</span></div>' +
+        '<div class="acts">' +
+          '<a class="buy" href="' + STORE + r[0] + '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(r[1] + " " + r[2]) + ' 스마트스토어에서 구매">스토어에서 구매 ↗</a>' +
+          '<a class="ask" href="' + TEL + '" aria-label="' + esc(r[1] + " " + r[2]) + ' 설치 상담 전화">설치 상담</a>' +
+        '</div>' +
+      '</div></article>';
+  }
+  var firstPaint = true, prevShown = 0;
+  /* mode: "append" = 더 보기 (기존 카드 유지, 새 카드만 추가) / 그 외 = 전체 재구성 (첫 렌더만 등장 애니메이션) */
+  function render(mode){
+    var list = filtered(), n = list.length, shown = Math.min(state.shown, n), html = "", i;
+    if (!n){
+      grid.innerHTML = '<div class="empty"><b>조건에 맞는 상품이 없습니다</b>검색어를 줄이거나 브랜드·형태 필터를 초기화해 주세요.</div>';
+    } else if (mode === "append" && prevShown > 0 && prevShown < shown && grid.querySelectorAll(".card").length === prevShown){
+      for (i = prevShown; i < shown; i++) html += card(list[i], i, true);
+      grid.insertAdjacentHTML("beforeend", html);
+    } else {
+      for (i = 0; i < shown; i++) html += card(list[i], i, firstPaint);
+      grid.innerHTML = html;
+    }
+    firstPaint = false; prevShown = shown;
+    mstat.innerHTML = "전체 " + P.length + "개 중 <b>" + n + "</b>개 상품";
+    if (shown < n){ more.hidden = false; morenum.textContent = "(" + shown + "/" + n + ")"; } else { more.hidden = true; }
+    mqwrap.classList.toggle("has", !!state.q);
+  }
+  function setBrand(b){
+    state.brand = b; state.shown = PAGE;
+    chips.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", String(x.dataset.brand === b)); });
+    render();
+  }
+  var counts = {}; P.forEach(function(r){ counts[r[1]] = (counts[r[1]] || 0) + 1; });
+  var ch = '<button type="button" data-brand="all" aria-pressed="true">전체<small>' + P.length + '</small></button>';
+  BRANDS.forEach(function(b){ ch += '<button type="button" data-brand="' + b + '" aria-pressed="false">' + b + '<small>' + (counts[b] || 0) + '</small></button>'; });
+  chips.innerHTML = ch;
+  chips.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setBrand(b.dataset.brand); });
+  mq.addEventListener("input", function(){ state.q = mq.value; state.shown = PAGE; render(); });
+  mqclr.addEventListener("click", function(){ mq.value = ""; state.q = ""; state.shown = PAGE; render(); mq.focus(); });
+  mkind.addEventListener("change", function(){ state.kind = mkind.value; state.shown = PAGE; render(); });
+  mmode.addEventListener("change", function(){ state.mode = mmode.value; state.shown = PAGE; render(); });
+  msort.addEventListener("change", function(){ state.sort = msort.value; state.shown = PAGE; render(); });
+  morebtn.addEventListener("click", function(){ state.shown += PAGE; render("append"); });
+  mreset.addEventListener("click", function(){
+    mq.value = ""; mkind.value = "all"; mmode.value = "all"; msort.value = "default";
+    state = { brand: "all", kind: "all", mode: "all", sort: "default", q: "", shown: PAGE };
+    setBrand("all");
   });
 
   /* ── 스크롤 리빌 ── */
@@ -786,7 +915,7 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
     nodes.forEach(function(el){ io.observe(el); });
   }
   observe(document.querySelectorAll(".rv"));
-  render("all");
+  render();
 
   /* ── 히어로 시차 이동 ── */
   if (!reduce && window.matchMedia("(min-width: 769px)").matches && window.matchMedia("(pointer: fine)").matches){
